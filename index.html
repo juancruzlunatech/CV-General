@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --accent-dark: #2980b9;
+            --text-color: #34495e;
+            --light-bg: #ecf0f1;
+            --white: #ffffff;
+            --border-color: #bdc3c7;
+            --padding-large: 40px;
+            --padding-medium: 20px;
+            --padding-small: 10px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: var(--padding-large) var(--padding-medium);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--padding-large);
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: right;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--padding-large);
+            padding: var(--padding-large);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-large);
+        }
+
+        .column.left {
+            grid-column: 1;
+        }
+
+        .column.right {
+            grid-column: 2;
+        }
+
+        /* Section Styling */
+        .section {
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: var(--padding-large);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: var(--padding-medium);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* Experience & Education */
+        .entry {
+            margin-bottom: var(--padding-medium);
+        }
+
+        .entry-header {
+            margin-bottom: 5px;
+        }
+
+        .entry-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: var(--primary-color);
+        }
+
+        .entry-subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .entry-date {
+            color: #95a5a6;
+            font-size: 0.9em;
+            font-style: italic;
+            text-align: left;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .entry-description {
+            color: var(--text-color);
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: var(--light-bg);
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        /* About/Summary Section */
+        .about-text {
+            color: var(--white);
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--padding-medium);
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: var(--padding-medium);
+                gap: var(--padding-medium);
+            }
+
+            .column.right {
+                grid-column: 1;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+
+        /* Placeholder styles */
+        .placeholder {
+            color: #bdc3c7;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>Juan Cruz Luna</h1>
+                <p class="subtitle">Systems Analyst</p>
+                <p class="about-text">Systems Analyst/Software Developer with 9+ years of experience across NZ and Argentina. Specialized in .NET backend development, cloud solutions, and banking systems. Committed to professional growth and delivering value through quality software.</p>
+            </div>
+            <div class="contact-info">
+                <a href="mailto:juancruzluna@gmail.com">juancruzluna@gmail.com</a>
+                <a href="tel:+64273263516">+64 27 326 3516</a>
+                <a href="https://www.linkedin.com/in/juan-cruz-luna-934b1320/">LinkedIn Profile ↗</a>
+                <p style="margin-top: 10px;">20 Tui Street<br>Waiheke Island, Auckland<br>New Zealand</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Column -->
+            <div class="column left">
+                <!-- Experience Section -->
+                <section class="section">
+                    <h2 class="section-title">Professional experience</h2>
+                    
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">.NET Back-end Software Developer – Banking</span>
+                        </div>
+                        <p class="entry-subtitle">Fiserv NZ</p>
+                        <p class="entry-date">Jul 2022 - Apr 2026</p>
+                        <p class="entry-description">Developing and maintaining features for mobile banking apps resulting in improved user satisfaction. Technologies: .NET 6.0/8.0, Azure Cloud, SQL Server, REST APIs, CI/CD Pipelines.</p>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Analyst Developer & System Maintenance</span>
+                        </div>
+                        <p class="entry-subtitle">Ministry of Economics, Argentina</p>
+                        <p class="entry-date">2012 - 2014</p>
+                        <p class="entry-description">Conducted system analysis, maintained and developed features for RAFAM System (used by 100+ councils). Supported users and customized solutions. Technologies: Visual Basic 6, Oracle DB, SQL.</p>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">System Analyst & Software Developer</span>
+                        </div>
+                        <p class="entry-subtitle">Accenture, Argentina</p>
+                        <p class="entry-date">2008 - 2012</p>
+                        <p class="entry-description">Worked on development and support for European banks (Mainframe/Cobol) and American projects (Agile/SCRUM). Experience with .NET, SharePoint, and enterprise systems. Technologies: Cobol, Mainframe, .NET Framework 4.8, Oracle DB.</p>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Systems Analyst</span>
+                        </div>
+                        <p class="entry-subtitle">National University of Technology, Argentina</p>
+                        <p class="entry-date">2006 - 2012</p>
+                        <p class="entry-description">Comprehensive studies in computer science, architecture, databases, networking, and software development lifecycle.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="column right">
+                <!-- Skills Section -->
+                <section class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">.NET Framework & Core</div>
+                        <div class="skill-item">C# & ASP.NET</div>
+                        <div class="skill-item">SQL Server</div>
+                        <div class="skill-item">Azure Cloud</div>
+                        <div class="skill-item">REST APIs</div>
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">Agile/SCRUM</div>
+                        <div class="skill-item">Visual Studio</div>
+                        <div class="skill-item">Azure DevOps</div>
+                        <div class="skill-item">Jira & Confluence</div>
+                        <div class="skill-item">Oracle DB</div>
+                        <div class="skill-item">Cobol/Mainframe</div>
+                    </div>
+                </section>
+
+                <!-- Languages Section (Optional) -->
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">English - Fluent</div>
+                        <div class="skill-item">Spanish - Native</div>
+                    </div>
+                </section>
+
+                <!-- References Section -->
+                <section class="section">
+                    <h2 class="section-title">Professional Core</h2>
+                    <div class="entry">
+                        <p class="entry-description">✓ 9+ years of IT experience (NZ & Argentina)</p>
+                        <p class="entry-description">✓ Fast learner with strong adaptability</p>
+                        <p class="entry-description">✓ Team player with organizational awareness</p>
+                        <p class="entry-description">✓ In-depth knowledge of computer architecture, databases, networking</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
